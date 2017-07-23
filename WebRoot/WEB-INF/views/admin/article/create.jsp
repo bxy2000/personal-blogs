@@ -29,7 +29,7 @@
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="${pageContext.request.contextPath}/admin/index"><i class="fa fa-dashboard"></i> 首页</a></li>
-					<li><a href="${pageContext.request.contextPath}/admin/article/index">文章</a></li>
+					<li><a class="currentpage" href="${pageContext.request.contextPath}/admin/article/index">文章</a></li>
 					<li class="active">新增</li>
 				</ol>
 			</section>
@@ -73,7 +73,7 @@
 									<input type="text" name="author" value="${user.username }" class="form-control"/>
 								</div>
 								<div class="col-md-4">
-									<input type="text" name="prompotion" placeholder="推荐指数" class="form-control"/>
+									<input type="text" name="promotion" placeholder="推荐指数" class="form-control"/>
 								</div>
 								<div class="col-md-4">
 									<input type="text" name="hot" placeholder="热门指数" class="form-control"/>
@@ -97,7 +97,7 @@
 							<button type="submit" class="btn btn-primary">
 								<span> 发表</span>
 							</button>
-							<a href="#" class="btn btn-default">
+							<a href="${pageContext.request.contextPath}/admin/article/index" class="btn btn-default">
 								<span> 取消</span>
 							</a>
 						</div>
@@ -118,12 +118,49 @@
 	<script src="${pageContext.request.contextPath}/assets/global/plugins/select2/select2.full.min.js"></script>
 	<!-- CK Editor -->
 	<script src="${pageContext.request.contextPath}/assets/global/plugins/ckeditor/ckeditor.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/global/plugins/tinymce/tinymce.min.js"></script>
 	<script type="text/javascript">
 		$(function () {
 			$(".select2").select2();
 			
 	    	CKEDITOR.replace('editor1');
-	  	});
+			//initMce();
+		});
+		
+		
+		function initMce() {
+			tinymce.init({
+		        selector: "textarea#editor1",
+		        plugins: [
+		            "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+		            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+		            "table contextmenu directionality emoticons template textcolor paste fullpage textcolor"
+		        ],
+	
+		        toolbar1: "undo redo | cut copy paste | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+		        toolbar2: " searchreplace | bullist numlist | outdent indent blockquote | link unlink anchor image media code | inserttime preview | forecolor backcolor",
+		        toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+	
+		        menubar: false,
+		        toolbar_items_size: 'small',
+	
+		        style_formats: [
+		            {title: 'Bold text', inline: 'b'},
+		            {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
+		            {title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
+		            {title: 'Example 1', inline: 'span', classes: 'example1'},
+		            {title: 'Example 2', inline: 'span', classes: 'example2'},
+		            {title: 'Table styles'},
+		            {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
+		        ],
+	
+		        templates: [
+		            {title: 'Test template 1', content: 'Test 1'},
+		            {title: 'Test template 2', content: 'Test 2'}
+		        ],
+		        language:'zh_CN'
+		    });
+		}
 	</script>
 </body>
 </html>

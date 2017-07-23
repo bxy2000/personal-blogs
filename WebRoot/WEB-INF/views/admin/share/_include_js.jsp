@@ -4,11 +4,8 @@
 <script src="${pageContext.request.contextPath}/assets/global/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/global/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="${pageContext.request.contextPath}/assets/global/plugins/admin-lte/js/app.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<!-- 
-<script src="${pageContext.request.contextPath}/assets/global/plugins/admin-lte/js/demo.js"></script>
- -->
 <script src="${pageContext.request.contextPath}/assets/page/admin.js"></script>
+<script src="${pageContext.request.contextPath}/assets/global/plugins/admin-lte/js/app.min.js"></script>
+
  
  

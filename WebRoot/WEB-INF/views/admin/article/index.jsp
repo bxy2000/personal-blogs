@@ -27,7 +27,7 @@
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="${pageContext.request.contextPath}/admin/index"><i class="fa fa-dashboard"></i> 首页</a></li>
-					<li><a href="${pageContext.request.contextPath}/admin/article/index">文章列表</a></li>
+					<li><a class="currentpage" href="${pageContext.request.contextPath}/admin/article/index">文章列表</a></li>
 				</ol>
 			</section>
 

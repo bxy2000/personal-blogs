@@ -1,16 +1,10 @@
 $(function(){
-	var url = window.location.pathname;
-	var element = $('ul.treeview a').filter(function(){
-		return this.href == url;
-	})
-	console.info(element);
-	element.parent().addClass('active');
+	var url = $('.currentpage').attr('href');
+	if(url == null || url == "") return;
 	
-	/*while(true){
-		if(element.is('li')){
-			element = element.parent().addClass('in').parent();
-		} else {
-			break;
-		}
-	}*/
+	var element = $('li.treeview a').filter(function(){
+		return this.href.indexOf('#') == -1 && this.href.indexOf(url) >= 0;
+	}).parent().addClass('active');
+
+	element.parent().parent().addClass('active');
 });
