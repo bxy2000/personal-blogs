@@ -86,7 +86,7 @@ var themeApp = {
 		//themeApp.responsiveIframe();
 		// themeApp.sidebarConfig();
 		// themeApp.recentPost();
-		//themeApp.highlighter();
+		themeApp.highlighter();
 		themeApp.backToTop();
 	}
 }
