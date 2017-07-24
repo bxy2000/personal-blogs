@@ -51,14 +51,18 @@ create table comment
 	constraint		fk_comment_article			foreign key(article_id)				references article(id)
 ) comment '评论表';
 
-insert into user(username, password) values ('admin', '1');
+insert into user(username, password) values ('admin', 'admin_888');
+insert into user(username, password) values ('bxy', 'bxy_888');
+insert into user(username, password) values ('lhr', 'lhr_888');
 
 insert into topic(topic_name) values ('Java');
 insert into topic(topic_name) values ('前端');
 insert into topic(topic_name) values ('数据库');
 insert into topic(topic_name) values ('框架');
 insert into topic(topic_name) values ('Linux');
+insert into topic(topic_name) values ('非技术专区');
 
+/*
 insert into article(title, author, content, create_date, topic_id) values ('java 入门', 'admin', 'java 入门', '2015-1-1', 1);
 insert into article(title, author, content, create_date, topic_id) values ('java 入门', 'admin', 'java 入门', '2015-1-1', 1);
 insert into article(title, author, content, create_date, topic_id) values ('java 入门', 'admin', 'java 入门', '2015-1-1', 1);
@@ -105,6 +109,4 @@ insert into article(title, author, content, create_date, topic_id) values ('java
 insert into article(title, author, content, create_date, topic_id) values ('java 入门', 'admin', 'java 入门', '2015-1-1', 1);
 insert into article(title, author, content, create_date, topic_id) values ('java 入门', 'admin', 'java 入门', '2015-1-1', 1);
 insert into article(title, author, content, create_date, topic_id) values ('java 入门', 'admin', 'java 入门', '2015-1-1', 1);
-
-
-
+*/
