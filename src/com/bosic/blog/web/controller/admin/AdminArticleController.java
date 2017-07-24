@@ -1,7 +1,6 @@
 package com.bosic.blog.web.controller.admin;
 
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bosic.blog.domain.Article;
-import com.bosic.blog.domain.Topic;
 import com.bosic.blog.service.ArticleService;
 import com.bosic.blog.service.PagedList;
 import com.bosic.blog.service.TopicService;
@@ -38,17 +36,14 @@ public class AdminArticleController {
 	
 	@RequestMapping("/create")
 	public String create(Model model) throws Exception {
-		List<Topic> topics = topicService.findAll();
-		
-		model.addAttribute("topics", topics);
+		model.addAttribute("topics", topicService.findAll());
 		
 		return "admin/article/create";
 	}
 	
 	@RequestMapping("/edit/{id}")
 	public String edit(@PathVariable(required=false) Long id, Model model) throws Exception {
-		List<Topic> topics = topicService.findAll();
-		model.addAttribute("topics", topics);
+		model.addAttribute("topics", topicService.findAll());
 
 		Article article = articleService.find(id);
 		model.addAttribute("article", article);

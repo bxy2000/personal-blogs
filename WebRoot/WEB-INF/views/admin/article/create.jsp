@@ -52,10 +52,10 @@
 					<form action="${pageContext.request.contextPath}/admin/article/save" method="post" class="form-horizontal">
 						<div class="box-body">
 							<div class="row">
-								<div class="col-md-8">
+								<div class="col-md-9">
 									<input type="text" id="title" name="title" class="form-control" placeholder="标题">								
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-3">
 									<select id="topicId" name="topic.id" class="form-control select2" style="width: 100%;">
 										<c:forEach var="t" items="${topics }">
 											<option value="${t.id }">${t.topicName }</option>
@@ -69,14 +69,18 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-4">
+								<div class="col-md-3">
+									<input type="hidden" name="user.id" value="${user.id }" />
 									<input type="text" name="author" value="${user.username }" class="form-control"/>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-3">
 									<input type="text" name="promotion" placeholder="推荐指数" class="form-control"/>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-3">
 									<input type="text" name="hot" placeholder="热门指数" class="form-control"/>
+								</div>
+								<div class="col-md-3">
+									<input type="text" name="top" placeholder="置顶" class="form-control"/>
 								</div>
 							</div>
 							<div class="row">
@@ -91,6 +95,36 @@
 			                    	</textarea>
 		                    	</div>
 	                    	</div>
+							<div class="row">
+								<div class="col-md-12">
+									&nbsp;
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<input type="text" name="slug" class="form-control" placeholder="slug">								
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									&nbsp;
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<input type="text" name="metaKeywords" class="form-control" placeholder="keywords">								
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									&nbsp;
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<input type="text" name="metaDescription" class="form-control" placeholder="description">								
+								</div>
+							</div>
 						</div>
 						<!-- /.box-body -->
 						<div class="box-footer">
@@ -104,7 +138,6 @@
 					</form>
 				</div>
 				<!-- /.box -->
-
 			</section>
 			<!-- /.content -->
 		</div>

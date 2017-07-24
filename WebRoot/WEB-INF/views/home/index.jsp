@@ -27,10 +27,10 @@
 						<article id="${article.id}" class="post">
 							<div class="post-head">
 								<h1 class="post-title">
-									<a href="${pageContext.request.contextPath}/article/${article.id}?tid=${param.id}">${article.title }</a>
+									<a href="${pageContext.request.contextPath}/home/read/${article.id}?tid=${param.id}">${article.title }</a>
 								</h1>
 								<div class="post-meta">
-									<span class="author">作者：<a href="#">${article.author}</a></span> &bull;
+									<span class="author">作者：<a href="${pageContext.request.contextPath}/home/read/${article.id}?tid=${param.id}">${article.author}</a></span> &bull;
 									<time class="post-date " datetime="${article.createDate}" title="${article.createDate}">${article.createDate}</time>
 								</div>
 							</div>
@@ -40,7 +40,7 @@
 								</p>
 							</div>
 							<div class="post-permalink">
-								<a href="${pageContext.request.contextPath}/article/${article.id}?tid=${param.id}" class="btn btn-default">阅读全文</a>
+								<a href="${pageContext.request.contextPath}/home/read/${article.id}?tid=${param.id}" class="btn btn-default">阅读全文</a>
 							</div>
 						
 							<footer class="post-footer clearfix">
@@ -61,20 +61,20 @@
 							<nav>
 							    <span class="page-number">第 ${articles.index }页 &frasl; 共 ${articles.total}页</span>
 								<ul class="pagination navbar-right">
-									<li><a href="${pageContext.request.contextPath}/${articles.prev}?tid=${param.tid}" aria-label="前一页">
+									<li><a href="${pageContext.request.contextPath}/home/index/${articles.prev}?tid=${param.tid}" aria-label="前一页">
 											<span aria-hidden="true">&laquo;</span>
 									</a></li>
 									<c:forEach var="i" begin="1" end="${articles.total}" step="1">
 										<c:choose>
 											<c:when test="${articles.index == i}">
-												<li class="active"><a href="${pageContext.request.contextPath}/${i}?tid=${param.tid}">${i}</a></li>
+												<li class="active"><a href="${pageContext.request.contextPath}/home/index/${i}?tid=${param.tid}">${i}</a></li>
 											</c:when>
 											<c:otherwise>
-												<li><a href="${pageContext.request.contextPath}/${i}?tid=${param.tid}">${i}</a></li>
+												<li><a href="${pageContext.request.contextPath}/home/index/${i}?tid=${param.tid}">${i}</a></li>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
-									<li><a href="${pageContext.request.contextPath}/${articles.next}?tid=${param.tid}" aria-label="后一页">
+									<li><a href="${pageContext.request.contextPath}/home/index/${articles.next}?tid=${param.tid}" aria-label="后一页">
 											<span aria-hidden="true">&raquo;</span>
 									</a></li>
 								</ul>
@@ -97,10 +97,9 @@
 						<h4 class="title">热门文章</h4>
 						<div class="content hot">
 							<ul>
-								<li><a href="#">Java 入门</a></li>
-								<li><a href="#">HTML 入门</a></li>
-								<li><a href="#">CSS3  入门</a></li>
-								<li><a href="#">JS   入门</a></li>
+								<c:forEach var="article" items="${hots }">
+									<li><a href="${pageContext.request.contextPath }/home/read/${article.id}?tid=${param.tid}">${article.title }</a></li>
+								</c:forEach>
 							</ul>
 						</div>
 					</div>	
@@ -109,10 +108,9 @@
 						<h4 class="title">推荐文章</h4>
 						<div class="content hot">
 							<ul>
-								<li><a href="#">Java 入门</a></li>
-								<li><a href="#">HTML 入门</a></li>
-								<li><a href="#">CSS3  入门</a></li>
-								<li><a href="#">JS   入门</a></li>
+								<c:forEach var="article" items="${promotions }">
+									<li><a href="${pageContext.request.contextPath }/home/read/${article.id}?tid=${param.tid}">${article.title }</a></li>
+								</c:forEach>
 							</ul>
 						</div>
 					</div>	

@@ -1,5 +1,6 @@
 package com.bosic.blog.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -9,110 +10,172 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
-@Table(name="article")
-public class Article {
+@Table(name = "article")
+public class Article implements Serializable {
+	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
-	@Column(length=80)
+	@Column(name = "title")
 	private String title;
-	@Column(length=30)
+	@Column(name = "author", length = 30)
 	private String author;
-	@Lob
-	@Column(columnDefinition="longtext")
+	@Column(name = "content")
 	private String content;
-	@Column(name="create_date")
+	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "create_date", length = 19)
 	private Date createDate;
-	@Column
+	@Column(name = "promotion")
 	private Integer promotion;
-	@Column
+	@Column(name = "hot")
 	private Integer hot;
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="topic_id")
+	@Column(name = "top")
+	private Integer top;
+
+	@Column(name = "slug", length = 80)
+	private String slug;
+	@Column(name = "meta_keywords")
+	private String metaKeywords;
+	@Column(name = "meta_description", length = 1024)
+	private String metaDescription;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "topic_id", nullable = false)
 	private Topic topic;
-	
-	public Article() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	public Article(String title, String author, String content, Date createDate, Integer promotion, Integer hot,
-			Topic topic) {
-		super();
-		this.title = title;
-		this.author = author;
-		this.content = content;
-		this.createDate = createDate;
-		this.promotion = promotion;
-		this.hot = hot;
-		this.topic = topic;
-	}
 
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public String getAuthor() {
 		return author;
 	}
+
 	public void setAuthor(String author) {
 		this.author = author;
 	}
+
 	public String getContent() {
 		return content;
 	}
+
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 	public Date getCreateDate() {
 		return createDate;
 	}
+
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
+
 	public Integer getPromotion() {
 		return promotion;
 	}
+
 	public void setPromotion(Integer promotion) {
 		this.promotion = promotion;
 	}
+
 	public Integer getHot() {
 		return hot;
 	}
+
 	public void setHot(Integer hot) {
 		this.hot = hot;
 	}
+
+	public Integer getTop() {
+		return top;
+	}
+
+	public void setTop(Integer top) {
+		this.top = top;
+	}
+
+	public String getSlug() {
+		return slug;
+	}
+
+	public void setSlug(String slug) {
+		this.slug = slug;
+	}
+
+	public String getMetaKeywords() {
+		return metaKeywords;
+	}
+
+	public void setMetaKeywords(String metaKeywords) {
+		this.metaKeywords = metaKeywords;
+	}
+
+	public String getMetaDescription() {
+		return metaDescription;
+	}
+
+	public void setMetaDescription(String metaDescription) {
+		this.metaDescription = metaDescription;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public Topic getTopic() {
 		return topic;
 	}
+
 	public void setTopic(Topic topic) {
 		this.topic = topic;
 	}
+	
 	@Transient
-	public String getProfile(){
-		if(content == null || "".equals(content)){
+	public String getProfile() {
+		if (content == null || "".equals(content)) {
 			return "";
 		} else {
 			return content.length() > 300 ? content.substring(0, 300) : content;
 		}
 	}
+
 	@Override
 	public String toString() {
 		return "Article [id=" + id + ", title=" + title + ", author=" + author + ", content=" + content
-				+ ", createDate=" + createDate + ", promotion=" + promotion + ", hot=" + hot + ", topic=" + topic + "]";
+				+ ", createDate=" + createDate + ", promotion=" + promotion + ", hot=" + hot + ", top=" + top
+				+ ", slug=" + slug + ", metaKeywords=" + metaKeywords + ", metaDescription=" + metaDescription
+				+ ", user=" + user + ", topic=" + topic + "]";
 	}
 }

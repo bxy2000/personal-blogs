@@ -4,10 +4,9 @@
 <html lang="zh-CN">
 <head>
 <jsp:include page="../share/_include_meta.jsp" />
-
 <title>播思客 | 技术博文</title>
-<meta name="keywords" content="">
-<meta name="description" content="" />
+<meta name="keywords" content="${article.metaKeywords }">
+<meta name="description" content="${article.metaDescription }" />
 
 <jsp:include page="../share/_include_css.jsp" />
 </head>
@@ -69,30 +68,16 @@
 					<!-- end tag cloud widget -->
 
 					<div class="widget">
-						<h4 class="title">热门文章</h4>
+						<h4 class="title">${article.author } 全部文章</h4>
 						<div class="content hot">
 							<ul>
-								<li><a href="#">Java 入门</a></li>
-								<li><a href="#">HTML 入门</a></li>
-								<li><a href="#">CSS3 入门</a></li>
-								<li><a href="#">JS 入门</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="widget">
-						<h4 class="title">推荐文章</h4>
-						<div class="content hot">
-							<ul>
-								<li><a href="#">Java 入门</a></li>
-								<li><a href="#">HTML 入门</a></li>
-								<li><a href="#">CSS3 入门</a></li>
-								<li><a href="#">JS 入门</a></li>
+								<c:forEach var="article" items="${articles }">
+									<li><a href="${pageContext.request.contextPath}/home/read/${article.id}?tid=${param.tid}">${article.title}</a></li>
+								</c:forEach>
 							</ul>
 						</div>
 					</div>
 				</aside>
-
 			</div>
 		</div>
 	</section>

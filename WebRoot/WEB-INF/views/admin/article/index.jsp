@@ -62,6 +62,9 @@
 									<th>标题</th>
 									<th>作者</th>
 									<th>发表时间</th>
+									<th>热门</th>
+									<th>推介</th>
+									<th>置顶</th>
 									<th style="width:160px;">操作</th>
 								</tr>
 								
@@ -74,6 +77,9 @@
 										<td>${article.title }</td>
 										<td>${article.author }</td>
 										<td>${article.createDate }</td>
+										<td>${article.hot }</td>
+										<td>${article.promotion }</td>
+										<td>${article.top }</td>
 										<td>
 											<a href="${pageContext.request.contextPath}/admin/article/edit/${article.id}" class="btn btn-xs btn-info">
 												<span class="glyphicon glyphicon-edit" aria-hidden="true"> 编辑</span>

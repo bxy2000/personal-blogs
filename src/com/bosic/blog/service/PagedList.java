@@ -7,10 +7,10 @@ public class PagedList<T> {
 	private int index;
 	//总页数
 	private int total;
-	//当前页数据
-	private List<T> rows;
 	//总记录数
 	private long count;
+	//当前页数据
+	private List<T> rows;
 	
 	public PagedList(int pageIndex, int pageSize, long totalCount, List<T> rows){
 		this.index = pageIndex;

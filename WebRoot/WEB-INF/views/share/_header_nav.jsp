@@ -16,12 +16,12 @@
 							<c:choose>
 								<c:when test="${param.tid == null && t.id == 0 || param.tid != null && param.tid == t.id }">
 									<li class="nav-current" role="presentation ">
-										<a href="${pageContext.request.contextPath}/1?tid=${t.id}">${t.topicName}</a>
+										<a href="${pageContext.request.contextPath}/home/index/1?tid=${t.id}">${t.topicName}</a>
 									</li>					
 								</c:when>
 								<c:otherwise>
 									<li role="presentation">
-										<a href="${pageContext.request.contextPath}/1?tid=${t.id}">${t.topicName}</a>
+										<a href="${pageContext.request.contextPath}/home/index/1?tid=${t.id}">${t.topicName}</a>
 									</li>					
 								</c:otherwise>
 							</c:choose>

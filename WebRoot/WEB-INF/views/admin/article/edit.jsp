@@ -52,11 +52,11 @@
 					<form action="${pageContext.request.contextPath}/admin/article/save" method="post" class="form-horizontal">
 						<div class="box-body">
 							<div class="row">
-								<div class="col-md-8">
+								<div class="col-md-9">
 									<input type="hidden" name="id" value="${article.id}" />
 									<input type="text" id="title" name="title" value="${article.title }" class="form-control" placeholder="标题">								
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-3">
 									<select id="topicId" name="topic.id" class="form-control select2" style="width: 100%;">
 										<c:forEach var="t" items="${topics }">
 											<option value="${t.id }">${t.topicName }</option>
@@ -70,14 +70,18 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-4">
+								<div class="col-md-3">
+									<input type="hidden" name="user.id" value="${article.user.id }" />
 									<input type="text" name="author" value="${article.author }" class="form-control"/>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-3">
 									<input type="text" name="promotion" value="${article.promotion }" placeholder="推荐指数" class="form-control"/>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-3">
 									<input type="text" name="hot" value="${article.hot }" placeholder="热门指数" class="form-control"/>
+								</div>
+								<div class="col-md-3">
+									<input type="text" name="top" value="${article.top }" placeholder="置顶" class="form-control"/>
 								</div>
 							</div>
 							<div class="row">
@@ -92,7 +96,38 @@
 			                    	</textarea>
 		                    	</div>
 	                    	</div>
+	                    	<div class="row">
+								<div class="col-md-12">
+									&nbsp;
+								</div>
+							</div>
+	                    	<div class="row">
+								<div class="col-md-12">
+									<input type="text" name="slug" value="${article.slug }" class="form-control" placeholder="slug">								
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									&nbsp;
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<input type="text" name="metaKeywords" value="${article.metaKeywords }" class="form-control" placeholder="keywords">								
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									&nbsp;
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<input type="text" name="metaDescription" value="${article.metaDescription }" class="form-control" placeholder="description">								
+								</div>
+							</div>
 						</div>
+						
 						<!-- /.box-body -->
 						<div class="box-footer">
 							<button type="submit" class="btn btn-primary">
@@ -121,11 +156,12 @@
 	<script src="${pageContext.request.contextPath}/assets/global/plugins/ckeditor/ckeditor.js"></script>
 	<script type="text/javascript">
 		$(function () {
-			$('.select2').select2();
+			$('#topicId').val(${article.topic.id});
+			//$('.select2').select2();
 			
 	    	CKEDITOR.replace('editor1');
 	    	
-	    	$('#topicId').val(${article.topic.id});
+	    	
 	  	});
 	</script>
 </body>
