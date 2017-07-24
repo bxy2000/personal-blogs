@@ -37,6 +37,7 @@ public class AdminController {
 	 */
 	@RequestMapping("/validate")
 	public String validate(String username, String password, Model model, HttpSession session) throws Exception {
+		System.out.println(username + " " + password);
 		if(userService.login(username, password)){
 			// 登录成功，保存用户到session中
 			User user = userService.findByUsername(username);

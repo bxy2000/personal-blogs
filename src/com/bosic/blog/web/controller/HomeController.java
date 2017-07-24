@@ -40,14 +40,18 @@ public class HomeController {
 	
 	@RequestMapping(value={"/article/{id}"})
 	public String read(@PathVariable Long id, Model model) throws Exception {
+		// 获取当前文章
+		Article article = articleService.find(id);
+		if(article == null){
+			throw new Exception("没有找到相应的博文！");
+		}
+		model.addAttribute("article", article);
+
 		// 获取分类信息
 		List<Topic> topics = topicService.findAll();
 		topics.add(0, new Topic(0L, "全部"));
 		model.addAttribute("topics", topics);
 		
-		// 获取当前文章
-		Article article = articleService.find(id);
-		model.addAttribute("article", article);
 		return "home/read";
 	}
 }
