@@ -21,8 +21,9 @@ public class UserServiceTest {
 	
 	@Test
 	public void testAdd() {
-		User user = new User("bxy", "123");
-		
+		User user = new User();
+		user.setUsername("bxy");
+		user.setPassword("123");
 		userService.add(user);
 		
 		TestCase.assertNotNull(user.getId());
@@ -30,7 +31,9 @@ public class UserServiceTest {
 
 	@Test
 	public void testUpdate() {
-		User user = new User("bxy", "123");
+		User user = new User();
+		user.setUsername("bxy");
+		user.setPassword("123");
 		user.setId(2L);
 		
 		userService.update(user);
