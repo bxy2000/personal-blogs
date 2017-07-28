@@ -167,7 +167,7 @@ public class Article implements Serializable {
 		if (content == null || "".equals(content)) {
 			return "";
 		} else {
-			return content.length() > 300 ? content.substring(0, 300) : content;
+			return content.length() > 200 ? content.substring(0, 200) : content;
 		}
 	}
 
