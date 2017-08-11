@@ -1,6 +1,7 @@
 package com.bosic.blog.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -56,9 +57,31 @@ public class ArticleService extends GenericService<Article, Long> {
 	 */
 	public List<Article> findArticlesByUserId(Long topicId, Long userId){
 		if(topicId == null || topicId == 0) {
-			return findAll("where u.user.id = ?", "order by u.id desc", userId);
+			return findAll("where u.user.id = ?", "order by u.serialNo, u.id desc", userId);
 		} else {
-			return findAll("where u.topic.id = ? and u.user.id = ?", "order by u.id desc", topicId, userId);
+			return findAll("where u.topic.id = ? and u.user.id = ?", "order by u.serialNo, u.id desc", topicId, userId);
+		}
+	}
+	
+	/**
+	 * 设置成同一系列文章.
+	 */
+	public void updateSerialNo(Long[] ids){
+		if(ids == null) return;
+		if(ids.length == 1) return;
+		
+		Article article = genericRepository.find(ids[0]);
+		String serialNo = article.getSerialNo();
+		if(serialNo == null || serialNo.equals("")){
+			serialNo = UUID.randomUUID().toString();
+		}
+		
+		for(Long id: ids){
+			Article a = genericRepository.find(id);
+			
+			a.setSerialNo(serialNo);
+			
+			genericRepository.update(a);
 		}
 	}
 }

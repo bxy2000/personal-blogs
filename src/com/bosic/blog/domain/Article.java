@@ -2,6 +2,7 @@ package com.bosic.blog.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -43,6 +44,9 @@ public class Article implements Serializable {
 	@Column(name = "top")
 	private Integer top;
 
+	@Column(name="serial_no", length=36)
+	private String serialNo = UUID.randomUUID().toString();
+	
 	@Column(name = "slug", length = 80)
 	private String slug;
 	@Column(name = "meta_keywords")
@@ -120,6 +124,14 @@ public class Article implements Serializable {
 
 	public void setTop(Integer top) {
 		this.top = top;
+	}
+	
+	public String getSerialNo() {
+		return serialNo;
+	}
+
+	public void setSerialNo(String serialNo) {
+		this.serialNo = serialNo;
 	}
 
 	public String getSlug() {

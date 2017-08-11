@@ -72,6 +72,7 @@
 							<div class="row">
 								<div class="col-md-3">
 									<input type="hidden" name="user.id" value="${article.user.id }" />
+									<input type="hidden" name="createDate" value="${article.createDate }" />
 									<input type="text" name="author" value="${article.author }" class="form-control"/>
 								</div>
 								<div class="col-md-3">
@@ -99,6 +100,11 @@
 	                    	<div class="row">
 								<div class="col-md-12">
 									&nbsp;
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<input type="text" name="serialNo" value="${article.serialNo }" class="form-control" placeholder="系列号">								
 								</div>
 							</div>
 	                    	<div class="row">
@@ -156,12 +162,8 @@
 	<script src="${pageContext.request.contextPath}/assets/global/plugins/ckeditor/ckeditor.js"></script>
 	<script type="text/javascript">
 		$(function () {
-			$('#topicId').val(${article.topic.id});
-			//$('.select2').select2();
-			
+			$('#topicId').val('${article.topic.id}');
 	    	CKEDITOR.replace('editor1');
-	    	
-	    	
 	  	});
 	</script>
 </body>

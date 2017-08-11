@@ -44,7 +44,7 @@ create table article
 	promotion			int															comment '推荐',
 	hot					int															comment '热门',
 	top					int															comment '置顶',
-	
+	serial_no			varchar(36)													comment '系列id',
 	slug				varchar(80)													comment '友好URL',
 	meta_keywords		varchar(255)												comment 'SEO元数据keyword',
 	meta_description	varchar(1024)												comment 'SEO元数据description',

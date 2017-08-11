@@ -18,7 +18,6 @@
 		
 		<jsp:include page="../share/sidebar.jsp" />
 
-		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
@@ -37,10 +36,13 @@
 				<div class="box">
 					<div class="box-header with-border">
 						<a href="${pageContext.request.contextPath}/admin/article/create" class="btn btn-sm btn-success">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true"> 新增</span>
+							<span class="fa fa-plus" aria-hidden="true"> 新增</span>
 						</a>
+						<button id="btnUpdate" class="btn btn-sm btn-success">
+							<span class="fa fa-edit" aria-hidden="true"> 系列</span>
+						</button>						
 						<button id="btnDelete" class="btn btn-sm btn-danger">
-							<span class="glyphicon glyphicon-remove" aria-hidden="true"> 删除</span>
+							<span class="fa fa-remove" aria-hidden="true"> 删除</span>
 						</button>						
 						<div class="box-tools pull-right">
 							<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -52,7 +54,7 @@
 						</div>
 					</div>
 					<div class="box-body">
-						<form id="frmArticle" action="${pageContext.request.contextPath}/admin/article/delete" method="post">
+						<form id="frmArticle" action="" method="post">
 							<table class="table table-bordered table-hover">
 								<tr>
 									<th>
@@ -65,6 +67,7 @@
 									<th>热门</th>
 									<th>推介</th>
 									<th>置顶</th>
+									<th>系列号</th>
 									<th style="width:160px;">操作</th>
 								</tr>
 								
@@ -80,12 +83,13 @@
 										<td>${article.hot }</td>
 										<td>${article.promotion }</td>
 										<td>${article.top }</td>
+										<td>${article.serialNo}</td>
 										<td>
 											<a href="${pageContext.request.contextPath}/admin/article/edit/${article.id}" class="btn btn-xs btn-info">
-												<span class="glyphicon glyphicon-edit" aria-hidden="true"> 编辑</span>
+												<span class="fa fa-edit" aria-hidden="true"> 编辑</span>
 											</a>
 											<button type="button" class="btn btn-xs btn-warning" onclick="confirmDelete('${pageContext.request.contextPath}/admin/article/delete/${article.id}')">
-												<span class="glyphicon glyphicon-minus" aria-hidden="true"> 删除</span>
+												<span class="fa fa-remove" aria-hidden="true"> 删除</span>
 											</button>
 										</td>
 									</tr>
@@ -119,13 +123,9 @@
 			                	</li>
 			        		</ul>
 					</div>
-					<!-- /.box-footer-->
 				</div>
-				<!-- /.box -->
 			</section>
-			<!-- /.content -->
 		</div>
-		<!-- /.content-wrapper -->
 
 		<jsp:include page="../share/footer.jsp" />
 	</div>
@@ -136,6 +136,14 @@
 		$(function(){
 			$('#btnDelete').click(function(){
 				if(confirm('确认删除吗？')){
+					$('#frmArticle').prop('action', '${pageContext.request.contextPath}/admin/article/delete');
+					$('#frmArticle').submit();
+				}
+			});
+			
+			$('#btnUpdate').click(function(){
+				if(confirm('确认设置成同一系列吗？')){
+					$('#frmArticle').prop('action', '${pageContext.request.contextPath}/admin/article/serial');
 					$('#frmArticle').submit();
 				}
 			});

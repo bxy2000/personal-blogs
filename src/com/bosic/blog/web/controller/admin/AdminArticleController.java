@@ -72,4 +72,10 @@ public class AdminArticleController {
 		
 		return "redirect:/admin/article/index";
 	}
+	
+	@RequestMapping(value={"/serial"})
+	public String delete(@RequestParam(required=false)Long[] ids) throws Exception {
+		articleService.updateSerialNo(ids);
+		return "redirect:/admin/article/index";
+	}
 }
