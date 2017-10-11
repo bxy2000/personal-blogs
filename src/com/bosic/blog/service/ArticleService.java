@@ -59,7 +59,7 @@ public class ArticleService extends GenericService<Article, Long> {
 		if(topicId == null || topicId == 0) {
 			return findAll("where u.user.id = ?", "order by u.serialNo, u.id desc", userId);
 		} else {
-			return findAll("where u.topic.id = ? and u.user.id = ?", "order by u.serialNo, u.id desc", topicId, userId);
+			return findAll("where u.topic.id = ? and u.user.id = ?", "order by u.serialNo, u.id", topicId, userId);
 		}
 	}
 	
